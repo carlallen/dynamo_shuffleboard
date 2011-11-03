@@ -1,9 +1,9 @@
 static char latchPin = 5;
 static char clockPin = 6;
 static char dataPin = 7;
-static char greenBtnPin = 8;
-static char redBtnPin = 9;
-static char resetBtnPin = 10;
+static char greenBtnPin = 3;
+static char redBtnPin = 2;
+static char resetBtnPin = 4;
 
 static char led_codes1[10];
 static char led_codes2[10];
@@ -80,9 +80,11 @@ void loop() {
   boolean update_score = false;
   if (green_btn == HIGH) {
     green_score++;
+          delay(100);
     update_score = true;
   }
   if (red_btn == HIGH) {
+          delay(100);
     red_score++;
     update_score = true;
   }
@@ -93,5 +95,7 @@ void loop() {
   if (update_score) {
     update_leds();
   }
-  while (digitalRead(greenBtnPin) == HIGH || digitalRead(redBtnPin) == HIGH || digitalRead(resetBtnPin) == HIGH) {};
+  while (digitalRead(greenBtnPin) == HIGH || digitalRead(redBtnPin) == HIGH || digitalRead(resetBtnPin) == HIGH) {
+
+  };
 }
